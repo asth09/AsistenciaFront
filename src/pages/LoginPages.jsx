@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function LoginPages() {
-  const { register, handleSubmit, formState: { errors }} = useForm()
-  const {signin, isAuthenticated} = useAuth();
+  const { register, handleSubmit} = useForm()
+  const {signin, isAuthenticated, errors} = useAuth();
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit((data) => {
@@ -31,11 +31,9 @@ function LoginPages() {
 
                   <div className="col-md-6">
                         <input type="text" {...register("usuario", { required: true })} className="form-control" placeholder="Usuario"/>
-                        {errors.usuario && <div className="invalid-feedback">{errors.usuario.message}</div>}
                         </div>
                         <div className="col-md-6 ">
                         <input type="password" {...register("password", { required: true })} className="form-control" placeholder="Contraseña"/>
-                        {errors.password && <div className="invalid-feedback">{errors.password.message}</div>}
                         </div>
                         <br/>
                         <br/>
@@ -46,6 +44,11 @@ function LoginPages() {
 
                   </div>
               </form>
+              {errors && (
+                <div className="error-message-container">
+                  <p className="error-message">{errors}</p>
+                </div>
+              )}
           </div>
       </section>
     </div>

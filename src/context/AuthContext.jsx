@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
 
   // clear errors after 5 seconds
   useEffect(() => {
@@ -48,8 +49,8 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data);
       setIsAuthenticated(true);
     } catch (error) {
-      console.log(error);
-      // setErrors(error.response.data.message);
+      // Manejo de errores adicionales
+      setErrors(error.response ? error.response.data.message : error.message);
     }
   };
 
@@ -105,6 +106,7 @@ export const AuthProvider = ({ children }) => {
         errors,
         loading,
         userRole,
+        errorMessage,
       }}
     >
       {children}

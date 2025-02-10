@@ -30,6 +30,18 @@
 .Zone {
   display: flex;
 }
+.error-message-container {
+  color: red; /* Color del texto */
+  padding: 10px; /* Espaciado interno */
+  margin-top: 10px; /* Margen superior */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+.error-message {
+  margin: 0; /* Eliminar margen del párrafo */
+}
+
+
 /* Usa esta clase en los divs que enredan los titulos de los formularios*/
 .Form_Title {
   margin-top: 100px;
